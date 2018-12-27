@@ -13,7 +13,9 @@ namespace TripTime.Domain.ContactInformation
         public string Country { get; private set; }
         public string StreetName { get; private set; }
         public string StreetNumber { get; private set; }
-        public Address(AddressBuilder builder)
+        public AddressBuilder builder { get; set; }
+
+        public Address()
         {
             Id = builder.Id;
             ZipCode = builder.ZipCode;
@@ -21,11 +23,6 @@ namespace TripTime.Domain.ContactInformation
             Country = builder.Country;
             StreetNumber = builder.StreetName;
             StreetNumber = builder.StreetNumber;
-        }
-
-        public Address()
-        {
-
         }
     }
 
