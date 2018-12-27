@@ -13,6 +13,7 @@ namespace TripTime.Domain.ContactInformation
         public string Country { get; private set; }
         public string StreetName { get; private set; }
         public string StreetNumber { get; private set; }
+
         public Address(AddressBuilder builder)
         {
             Id = builder.Id;

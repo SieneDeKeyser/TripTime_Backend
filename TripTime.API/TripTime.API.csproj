@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>da459aa1-4e73-4e9f-9dfb-359de8d33da7</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +12,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TripTime.Service\TripTime.Service.csproj" />
   </ItemGroup>
 
 </Project>

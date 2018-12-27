@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TripTime.Infrastructure\TripTime.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
