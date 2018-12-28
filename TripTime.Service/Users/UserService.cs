@@ -20,11 +20,16 @@ namespace TripTime.Service.Users
         {
             await _userRepository.Create(user);
             return user.Id.ToString();
-        }        
+        }
 
-        public async Task<User> GetById(Guid id)
+        public async Task<User> GetAdminById(Guid id)
         {
             return await _userRepository.GetById(id);
+        }
+
+        public async Task<User> GetClientById(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

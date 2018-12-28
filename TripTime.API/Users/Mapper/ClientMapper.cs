@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using TripTime.API.ContactInformation.Mapper;
 using TripTime.API.Users.DTO.ClientDTO;
+using TripTime.API.Users.DTO.UserDTO;
 using TripTime.Domain.Users;
 using TripTime.Infrastructure.GlobalInterfaces;
 using TripTime.Service.Users.Security;
@@ -15,11 +16,13 @@ namespace TripTime.API.Users.Mapper
     {
         private readonly UserAuthenticationService _userService;
         private readonly AddressMapper _addressMapper;
+        private readonly UserMapper _userMapper;
 
-        public ClientMapper(UserAuthenticationService userService, AddressMapper addressMapper)
+        public ClientMapper(UserAuthenticationService userService, AddressMapper addressMapper, UserMapper userMapper)
         {
             _userService = userService;
             _addressMapper = addressMapper;
+            _userMapper = userMapper;
         }
 
 
@@ -28,26 +31,22 @@ namespace TripTime.API.Users.Mapper
 
         public ClientDTO_Return DomainToDto(Client givenDomainObject)
         {
-            var userDto = new ClientDTO_Return
+            return new ClientDTO_Return
             {
-                Id = givenDomainObject.Id.ToString(),
-                FirstName = givenDomainObject.FirstName,
-                LastName = givenDomainObject.LastName,
-                Email = givenDomainObject.Email.Address,
+                UserDTO = _userMapper.DomainToDto(givenDomainObject),
                 AddressDTO = _addressMapper.DomainToDto(givenDomainObject.Address),
                 RegistrationDate = givenDomainObject.RegistrationDate,
                 Rating = givenDomainObject.Rating
             };
-            return userDto;
         }
 
         public Client DtoToDomain(ClientDTO_Create givenDTO)
         {
             return Client.CreateNewClient(
-                givenDTO.FirstName,
-                givenDTO.LastName,
-                new MailAddress(givenDTO.Email),
-                _userService.CreateUserSecurity(givenDTO.Password),
+                givenDTO.UserDTO.FirstName,
+                givenDTO.UserDTO.LastName,
+                new MailAddress(givenDTO.UserDTO.LoginDTO.Email),
+                _userService.CreateUserSecurity(givenDTO.UserDTO.LoginDTO.Password),
                 _addressMapper.DtoToDomain(givenDTO.AddressDTO),
                 givenDTO.Rating
                 );

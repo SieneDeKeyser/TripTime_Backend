@@ -9,6 +9,7 @@ namespace TripTime.Service.Users
     public interface IUserService
     {
         Task<string> Create(User user);
-        Task<User> GetById(Guid id);        
+        Task<User> GetAdminById(Guid id);        
+        Task<User> GetClientById(Guid id);
     }
 }

@@ -63,7 +63,7 @@ namespace TripTime.Service.Users.Security
                 {
                     new Claim(ClaimTypes.Name, foundUser.FirstName),
                     new Claim(ClaimTypes.Email, foundUser.Email.Address),
-                    new Claim(ClaimTypes.Role, foundUser.GetType().ToString())
+                    new Claim(ClaimTypes.Role, foundUser.GetType().Name.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddHours(8),
                 SigningCredentials = new SigningCredentials(

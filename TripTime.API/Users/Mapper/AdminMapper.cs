@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using TripTime.API.Users.DTO.AdminDTO;
+using TripTime.API.Users.DTO.UserDTO;
 using TripTime.Domain.Users;
 using TripTime.Infrastructure.GlobalInterfaces;
 using TripTime.Service.Users.Security;
@@ -13,10 +14,12 @@ namespace TripTime.API.Users.Mapper
     public class AdminMapper : IMapper<Admin, AdminDTO_Create, AdminDTO_Return>
     {
         private readonly UserAuthenticationService _userService;
+        private readonly UserMapper _userMapper;
 
-        public AdminMapper(UserAuthenticationService userService)
+        public AdminMapper(UserAuthenticationService userService, UserMapper userMapper)
         {
             _userService = userService;
+            _userMapper = userMapper;
         }
 
 
@@ -25,10 +28,7 @@ namespace TripTime.API.Users.Mapper
         {
             return new AdminDTO_Return
             {
-                Id = givenDomainObject.Id.ToString(),
-                FirstName = givenDomainObject.FirstName,
-                LastName = givenDomainObject.LastName,
-                Email = givenDomainObject.Email.Address
+                UserDTO = _userMapper.DomainToDto(givenDomainObject)                                    
             };
 
         }
@@ -36,10 +36,10 @@ namespace TripTime.API.Users.Mapper
         public Admin DtoToDomain(AdminDTO_Create givenDTO)
         {
             return Admin.CreateNewAdmin(
-                givenDTO.FirstName,
-                givenDTO.LastName,
-                new MailAddress(givenDTO.Email),
-                _userService.CreateUserSecurity(givenDTO.Password)
+                givenDTO.UserDTO.FirstName,
+                givenDTO.UserDTO.LastName,
+                new MailAddress(givenDTO.UserDTO.LoginDTO.Email),
+                _userService.CreateUserSecurity(givenDTO.UserDTO.LoginDTO.Password)
                 );
         }
 
