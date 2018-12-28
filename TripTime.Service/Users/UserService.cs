@@ -16,20 +16,33 @@ namespace TripTime.Service.Users
             _userRepository = userRepository;
         }
 
-        public async Task<string> Create(User user)
+
+        public async Task<string> CreateNew(User user)
         {
-            await _userRepository.Create(user);
+            await _userRepository.Save(user);
             return user.Id.ToString();
         }
 
-        public async Task<User> GetAdminById(Guid id)
+        public async Task<Admin> GetAdminById(string id)
         {
-            return await _userRepository.GetById(id);
-        }
+            Guid givenId = Guid.Parse(id);
 
-        public async Task<User> GetClientById(Guid id)
+            var foundUser = await _userRepository.GetAdminById(givenId);
+            if (foundUser == null)
+            { return null; }
+            else
+            { return foundUser; }
+        }      
+
+        public async Task<Client> GetClientById(string id)
         {
-            throw new NotImplementedException();
+            Guid givenId = Guid.Parse(id);
+
+            var foundUser = await _userRepository.GetClientById(givenId);
+            if (foundUser == null)
+            { return null; }
+            else
+            { return foundUser; }
         }
     }
 }

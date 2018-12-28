@@ -32,12 +32,26 @@ namespace TripTime.API.Users.Controller
         public async Task<ActionResult<ClientDTO_Return>> Register([FromBody] ClientDTO_Create givenClientDTO)
         {
             var user = _clientMapper.DtoToDomain(givenClientDTO);
-            var userId = await _userService.Create(user);
-            ClientDTO_Return userDto = _clientMapper.DomainToDto(await _userService.GetClientById(Guid.Parse(userId)) as Client);
+            var userId = await _userService.CreateNew(user);
+            var createdUser = await _userService.GetClientById(userId);
+            if (createdUser == null)
+            {
+                return BadRequest();
+            }
+            ClientDTO_Return userDto = _clientMapper.DomainToDto(createdUser);
             return Ok(userDto);
         }
 
-       
-
+        [HttpGet("{id}")]
+        [Authorize]
+        public async Task<ActionResult<ClientDTO_Return>> GetById(string id)
+        {
+            var foundUser = await _userService.GetClientById(id);
+            if (foundUser != null)
+            {
+                return Ok(_clientMapper.DomainToDto(foundUser));
+            }
+            return BadRequest("Could not find your user information...");
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TripTime.Data.Contexts;
+using TripTime.Domain.ContactInformation;
 using TripTime.Domain.Users;
 
 namespace TripTime.Data.Repositories
@@ -18,22 +19,24 @@ namespace TripTime.Data.Repositories
             _context = context;
         }
 
-        public async Task<User> Create(User userToCreate)
+
+        public async Task<User> Save(User userToCreate)
         {
             _context.Add(userToCreate);
             await _context.SaveChangesAsync();
             return userToCreate;
         }
 
-        public async Task<List<User>> GetAll()
+
+        public async Task<Admin> GetAdminById(Guid givenId)
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Set<Admin>().SingleOrDefaultAsync(admin => admin.Id == givenId);
+        }
+        public async Task<Client> GetClientById(Guid givenId)
+        {
+            return await _context.Set<Client>().Include(client => client.Address).SingleOrDefaultAsync(client => client.Id == givenId);
         }
 
-        public async Task<User> GetById(Guid id)
-        {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
-        }
 
         public async Task<User> Update(User userToUpdate)
         {
@@ -42,9 +45,14 @@ namespace TripTime.Data.Repositories
             return await _context.Users.FirstOrDefaultAsync(u => u.Id == userToUpdate.Id);
         }
 
-        public User FindByEmail(string givenEmail)
+        public async Task<List<User>> GetAll()
         {
-            return _context.Users.FirstOrDefault(u => u.Email.Address == givenEmail);
-        }       
+            return await _context.Users.ToListAsync();
+        }
+
+        public async Task<User> FindByEmail(string givenEmail)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email.Address == givenEmail);
+        }
     }
 }

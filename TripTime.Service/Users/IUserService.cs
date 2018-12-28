@@ -8,8 +8,8 @@ namespace TripTime.Service.Users
 {
     public interface IUserService
     {
-        Task<string> Create(User user);
-        Task<User> GetAdminById(Guid id);        
-        Task<User> GetClientById(Guid id);
+        Task<string> CreateNew(User user);       
+        Task<Admin> GetAdminById(string id);
+        Task<Client> GetClientById(string id);
     }
 }
