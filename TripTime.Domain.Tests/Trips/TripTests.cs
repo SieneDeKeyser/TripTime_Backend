@@ -14,7 +14,6 @@ namespace TripTime.Domain.Tests.Trips
         {
             //Given
             var newTrip = Trip.CreateNewTrip(
-                Guid.NewGuid(), 
                 10,
                 Guid.NewGuid(),
                 2000,
@@ -34,7 +33,6 @@ namespace TripTime.Domain.Tests.Trips
         {
             //Given
             var newTrip = Trip.CreateNewTrip(
-                Guid.NewGuid(),
                 10,
                 Guid.NewGuid(),
                 2000,

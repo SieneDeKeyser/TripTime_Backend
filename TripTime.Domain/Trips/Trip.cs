@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using TripTime.Domain.Files;
-using TripTime.Infrastructure.Builders;
 
 namespace TripTime.Domain.Trips
 {
@@ -18,9 +17,9 @@ namespace TripTime.Domain.Trips
         public Transport TransportType { get; private set; }
 
         protected Trip(){}
-        protected Trip(Guid id, int capacity, Guid hotelId, decimal basicPrice, string schedule, Transport transportType)
+        protected Trip(int capacity, Guid hotelId, decimal basicPrice, string schedule, Transport transportType)
         {
-            Id = id;
+            Id = Guid.NewGuid();
             Capacity = capacity;
             HotelId = hotelId;
             BasicPrice = basicPrice;
@@ -28,9 +27,9 @@ namespace TripTime.Domain.Trips
             TransportType = transportType;
         }
 
-        public static Trip CreateNewTrip(Guid id, int capacity, Guid hotelId, decimal basicPrice, string schedule, Transport transportType)
+        public static Trip CreateNewTrip(int capacity, Guid hotelId, decimal basicPrice, string schedule, Transport transportType)
         {
-            return new Trip(id, capacity, hotelId, basicPrice, schedule, transportType);
+            return new Trip(capacity, hotelId, basicPrice, schedule, transportType);
         }
     }
 }
