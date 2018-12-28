@@ -8,53 +8,23 @@ namespace TripTime.Domain.Trips
         public Guid Id { get; private set; }
         public Guid AddressId { get; private set; }
         public Address Address { get; private set; }
-        public string WebSite { get; private set; }
-        public string ContactPerson { get; private set; }
-        public HotelBuilder builder { get; set; }
-
-        public Hotel()
-        {
-            Id = builder.Id;
-            AddressId = builder.AddressId;
-            WebSite = builder.WebSite;
-            ContactPerson = builder.ContactPerson;
-        }
-    }
-
-    public class HotelBuilder: Builder<Hotel>
-    {
-        public Guid Id { get; private set; }
-        public Guid AddressId { get; private set; }
-        public string WebSite { get; private set; }
+        public string Website { get; private set; }
         public string ContactPerson { get; private set; }
 
-        public static HotelBuilder NewHotelBuilder()
-        {
-            return new HotelBuilder();
-        }
+        private Hotel(){}
 
-        public HotelBuilder WithId(Guid id)
+        private Hotel(Guid id, Guid addressId, string website, string contactPerson)
         {
             Id = id;
-            return this;
-        }
-
-        public HotelBuilder WithAddressId(Guid id)
-        {
-            AddressId = id;
-            return this;
-        }
-
-        public HotelBuilder WithWebsite(string website)
-        {
-            WebSite = website;
-            return this;
-        }
-
-        public HotelBuilder WithContactPerson(string contactPerson)
-        {
+            AddressId = addressId;
+            Website = website;
             ContactPerson = contactPerson;
-            return this;
+        }
+
+        public static Hotel CreateNewHotel(Guid id, Guid addressId, string website, string contactPerson)
+        {
+            return new Hotel(id, addressId, website, contactPerson);
         }
     }
+
 }

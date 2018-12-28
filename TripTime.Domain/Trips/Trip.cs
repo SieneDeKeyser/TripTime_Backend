@@ -16,66 +16,21 @@ namespace TripTime.Domain.Trips
         public IList<Image> Images { get; private set; }
         public string Schedule { get; private set; }
         public Transport TransportType { get; private set; }
-        public TripBuilder builder { get; set; }
 
-        public Trip()
-        {
-            Id = builder.Id;
-            Capacity = builder.Capacity;
-            HotelId = builder.HotelId;
-            BasicPrice = builder.BasicPrice;
-            Schedule = builder.Schedule;
-            TransportType = builder.TransportType;
-        }
-    }
-    public class TripBuilder: Builder<Trip>
-    {
-        public Guid Id { get; private set; }
-        public int Capacity { get; private set; }
-        public Guid HotelId { get; private set; }
-        public decimal BasicPrice { get; private set; }
-        public string Schedule { get; private set; }
-        public Transport TransportType { get; private set; }
-
-        public static TripBuilder NewTripBuilder()
-        {
-            return new TripBuilder();
-        }
-
-        public TripBuilder WithId(Guid id)
+        protected Trip(){}
+        protected Trip(Guid id, int capacity, Guid hotelId, decimal basicPrice, string schedule, Transport transportType)
         {
             Id = id;
-            return this;
-        }
-
-        public TripBuilder WithHotelId(Guid hotelId)
-        {
-            HotelId= hotelId;
-            return this;
-        }
-
-        public TripBuilder WithCapacity(int capacity)
-        {
             Capacity = capacity;
-            return this;
-        }
-
-        public TripBuilder WithBasicPrice(decimal basicPrice)
-        {
+            HotelId = hotelId;
             BasicPrice = basicPrice;
-            return this;
+            Schedule = schedule;
+            TransportType = transportType;
         }
 
-        public TripBuilder WithSchedule(string schedule)
+        public static Trip CreateNewTrip(Guid id, int capacity, Guid hotelId, decimal basicPrice, string schedule, Transport transportType)
         {
-            Schedule= schedule;
-            return this;
-        }
-
-        public TripBuilder WithTransportType(Transport type)
-        {
-            TransportType = type;
-            return this;
+            return new Trip(id, capacity, hotelId, basicPrice, schedule, transportType);
         }
     }
 }

@@ -12,22 +12,41 @@ namespace TripTime.Domain.Tests.Trips
         [Fact]
         public void GivenTripWithBasicPrice2000_WhenAllInclusive_ThenPriceIsAugmentedWith5000()
         {
-            ////Given
-            //var newTrip = TripBuilder.NewTripBuilder()
-            //    .WithId(Guid.NewGuid())
-            //    .WithTransportType(Transport.Bus)
-            //    .WithSchedule("test schedule")
-            //    .WithBasicPrice(2000)
-            //    .WithCapacity(10)
-            //    .WithHotelId(Guid.NewGuid())
-            //    .Build();
+            //Given
+            var newTrip = Trip.CreateNewTrip(
+                Guid.NewGuid(), 
+                10,
+                Guid.NewGuid(),
+                2000,
+                "test schedule",
+                Transport.Flight);
 
-            ////when
-            //Allinclusive tripAllinclusive = (Allinclusive) newTrip;
+            //when
+            Allinclusive tripAllinclusive = new Allinclusive(newTrip);
 
-            ////then
-            //Assert.Equal(7000, tripAllinclusive.BasicPrice);
-          
+            //then
+            Assert.Equal(7000, tripAllinclusive.BasicPrice);
+
+        }
+
+        [Fact]
+        public void GivenTripWithBasicPrice2000_WhenHalfPension_ThenPriceIsAugmentedWith1500()
+        {
+            //Given
+            var newTrip = Trip.CreateNewTrip(
+                Guid.NewGuid(),
+                10,
+                Guid.NewGuid(),
+                2000,
+                "test schedule",
+                Transport.Flight);
+
+            //when
+            HalfPension tripAllinclusive = new HalfPension(newTrip);
+
+            //then
+            Assert.Equal(3500, tripAllinclusive.BasicPrice);
+
         }
     }
 }
