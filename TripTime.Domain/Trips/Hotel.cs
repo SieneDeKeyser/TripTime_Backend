@@ -1,6 +1,5 @@
 ﻿using System;
 using TripTime.Domain.ContactInformation;
-using TripTime.Infrastructure.Builders;
 namespace TripTime.Domain.Trips
 {
    public class Hotel
