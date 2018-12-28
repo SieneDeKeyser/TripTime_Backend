@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TripTime.Infrastructure.Builders;
 
 namespace TripTime.Domain.ContactInformation
 {
@@ -16,19 +17,19 @@ namespace TripTime.Domain.ContactInformation
         private Address()
         {}
 
-        private Address(Guid id, int zipCode, string city, string country, string streetName, string streetNumber)
+        private Address(int zipCode, string city, string country, string streetName, string streetNumber)
         {
-            Id = id;
+            Id = Guid.NewGuid();
             ZipCode = zipCode;
             City = city;
             Country = country;
             StreetName = streetName;
             StreetNumber = streetNumber;
         }
-        
-        public static Address CreateNewAddress(Guid id, int zipCode, string city, string country, string streetName, string streetNumber)
+
+        public static Address CreateNewAddress(int zipCode, string city, string country, string streetName, string streetNumber)
         {
-            return new Address(id, zipCode, city, country, streetName, streetNumber);
+            return new Address(zipCode, city, country, streetName, streetNumber);
         }
     }
 

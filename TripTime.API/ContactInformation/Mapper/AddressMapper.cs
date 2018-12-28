@@ -12,7 +12,25 @@ namespace TripTime.API.ContactInformation.Mapper
     {
         public AddressDTO_Return DomainToDto(Address givenDomainObject)
         {
-            throw new NotImplementedException();
+            return new AddressDTO_Return()
+            {
+                City = givenDomainObject.City,
+                Country = givenDomainObject.Country,
+                StreetName = givenDomainObject.StreetName,
+                StreetNumber = givenDomainObject.StreetNumber,
+                Id = givenDomainObject.Id,
+                ZipCode = givenDomainObject.ZipCode
+            };
+        }
+        public Address DtoToDomain(AddressDTO_Create givenDTO)
+        {
+            return Address.CreateNewAddress(
+                givenDTO.ZipCode,
+                givenDTO.City,
+                givenDTO.Country,
+                givenDTO.StreetName,
+                givenDTO.StreetNumber
+                );
         }
 
         public List<Address> DtoListToDomainList(List<AddressDTO_Create> listOfcreateDTOs)
@@ -25,9 +43,5 @@ namespace TripTime.API.ContactInformation.Mapper
             throw new NotImplementedException();
         }
 
-        public Address DtoToDomain(AddressDTO_Create givenDTO)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

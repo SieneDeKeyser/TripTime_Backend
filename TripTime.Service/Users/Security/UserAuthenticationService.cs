@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using TripTime.Data.Repositories;
 using TripTime.Domain.Users;
 
@@ -26,9 +27,9 @@ namespace TripTime.Service.Users.Security
             _configuration = configuration;
         }
 
-        public JwtSecurityToken Authenticate(string providedEmail, string providedPassword)
+        public async Task<JwtSecurityToken> Authenticate(string providedEmail, string providedPassword)
         {
-            User foundUser = _userRepository.FindByEmail(providedEmail);
+            User foundUser = await _userRepository.FindByEmail(providedEmail);
             if (foundUser == null)
             {
                 return null;
@@ -40,10 +41,10 @@ namespace TripTime.Service.Users.Security
             return null;
         }
 
-        public User GetCurrentLoggedInUser(ClaimsPrincipal principleUser)
+        public async Task<User> GetCurrentLoggedInUser(ClaimsPrincipal principleUser)
         {
             var emailOfAuthenticatedUser = principleUser.FindFirst(ClaimTypes.Email)?.Value;
-            return _userRepository.FindByEmail(emailOfAuthenticatedUser);
+            return await _userRepository.FindByEmail(emailOfAuthenticatedUser);
         }
 
         public UserSecurity CreateUserSecurity(string userPassword)

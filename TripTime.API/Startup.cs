@@ -16,6 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using TripTime.API.ContactInformation.Mapper;
 using TripTime.API.Users.Mapper;
 using TripTime.Data.Contexts;
 using TripTime.Data.Repositories;
@@ -61,6 +62,7 @@ namespace TripTime.API
             services.AddScoped<AdminMapper>();
             services.AddScoped<ClientMapper>();
             services.AddScoped<UserMapper>();
+            services.AddScoped<AddressMapper>();
 
 
             services.AddScoped<UserRepository>();

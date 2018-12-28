@@ -32,9 +32,9 @@ namespace TripTime.API.Users.Controller
 
         [HttpPost("authenticate")]
         [AllowAnonymous]
-        public ActionResult<TokenDTO> Authenticate([FromBody] LoginDTO userRequestDto)
+        public async Task< ActionResult<TokenDTO>> Authenticate([FromBody] LoginDTO userRequestDto)
         {
-            var securityToken = _userAuthenticationService.Authenticate(userRequestDto.Email, userRequestDto.Password);
+            var securityToken = await _userAuthenticationService.Authenticate(userRequestDto.Email, userRequestDto.Password);
 
             if (securityToken != null)
             {
@@ -48,9 +48,9 @@ namespace TripTime.API.Users.Controller
 
         [HttpGet("current")]
         [Authorize]
-        public ActionResult<UserDTO_Return> GeCurrentUser()
+        public async Task<ActionResult<UserDTO_Return>> GeCurrentUser()
         {
-            var authenticatedUser = _userAuthenticationService.GetCurrentLoggedInUser(User);
+            var authenticatedUser = await _userAuthenticationService.GetCurrentLoggedInUser(User);
             if (authenticatedUser != null)
             {
                 return Ok(_userMapper.DomainToDto(authenticatedUser));

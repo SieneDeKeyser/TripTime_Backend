@@ -45,9 +45,6 @@ namespace TripTime.Data.Contexts
                 .ToTable("Users")
                 .HasKey(user => user.Id);
 
-            modelBuilder.Entity<Client>();
-            modelBuilder.Entity<Admin>();
-
             modelBuilder.Entity<User>()
                 .OwnsOne(user => user.Email, email =>
                 {
@@ -61,10 +58,22 @@ namespace TripTime.Data.Contexts
                     pass.Property(prop => prop.Salt).HasColumnName("AppliedSalt");
                 });
 
+            modelBuilder.Entity<Client>()
+                .HasOne(cl => cl.Address)
+                .WithOne()
+                .HasForeignKey<Client>(cl => cl.AddressId);
+                
+
+            modelBuilder.Entity<Admin>();
 
             modelBuilder.Entity<Hotel>()
                 .ToTable("Hotels")
                 .HasKey(hotel => hotel.Id);
+
+            modelBuilder.Entity<Hotel>()
+                .HasOne(cl => cl.Address)
+                .WithOne()
+                .HasForeignKey<Hotel>(cl => cl.AddressId);
 
             modelBuilder.Entity<Trip>()
                 .ToTable("Trips")
