@@ -13,67 +13,19 @@ namespace TripTime.Domain.ContactInformation
         public string Country { get; private set; }
         public string StreetName { get; private set; }
         public string StreetNumber { get; private set; }
-        public AddressBuilder builder { get; set; }
 
-        public Address()
-        {
-            Id = builder.Id;
-            ZipCode = builder.ZipCode;
-            City = builder.City;
-            Country = builder.Country;
-            StreetNumber = builder.StreetName;
-            StreetNumber = builder.StreetNumber;
-        }
-    }
+        private Address()
+        {}
 
-    public class AddressBuilder : Builder<Address>
-    {
-        public Guid Id { get; private set; }
-        public int ZipCode { get; private set; }
-        public string City { get; private set; }
-        public string Country { get; private set; }
-        public string StreetName { get; private set; }
-        public string StreetNumber { get; private set; }
-
-        public static AddressBuilder newAddressBuilder()
-        {
-            return new AddressBuilder();
-        }
-
-        public AddressBuilder WithId(Guid id)
+        private Address(Guid id, int zipCode, string city, string country, string streetName, string streetNumber)
         {
             Id = id;
-            return this;
-        }
-
-        public AddressBuilder WithZipCode(int zipCode)
-        {
             ZipCode = zipCode;
-            return this;
-        }
-
-        public AddressBuilder WithCity(string cityName)
-        {
-            City = cityName;
-            return this;
-        }
-        public AddressBuilder WithCountry(string countryName)
-        {
-            Country = countryName;
-            return this;
-        }
-
-        public AddressBuilder WithStreetName(string streetName)
-        {
+            City = city;
+            Country = country;
             StreetName = streetName;
-            return this;
-        }
-
-        public AddressBuilder WithStreetNumber(string streetNumber)
-        {
             StreetNumber = streetNumber;
-            return this;
         }
-
     }
+
 }

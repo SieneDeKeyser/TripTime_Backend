@@ -13,7 +13,7 @@ namespace TripTime.Domain.Users
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
 
-        private User() { }
+        protected User() { }
 
         public User(string firstName, string lastName, MailAddress email, UserSecurity securePassword)
         {

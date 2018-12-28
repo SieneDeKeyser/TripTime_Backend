@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TripTime.Domain.Trips;
+using TripTime.Domain.Users;
 
 namespace TripTime.Domain.Files
 {
@@ -14,6 +15,6 @@ namespace TripTime.Domain.Files
         public Guid UserId { get; set; }
         public Guid TripId { get; private set; }
         public Trip Trip { get; private set; }
-        //public User User { get; private set; }
+        public User User { get; private set; }
     }
 }

@@ -7,6 +7,7 @@ namespace TripTime.Domain.Users
 {
     public class Admin : User
     {
+        private Admin():base(){}
         private Admin(string firstName, string lastName, MailAddress email, UserSecurity securePassword) : base(firstName, lastName, email, securePassword)
         {}
 

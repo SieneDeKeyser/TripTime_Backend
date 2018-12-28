@@ -13,6 +13,7 @@ namespace TripTime.Domain.Users
         public DateTime RegistrationDate { get; private set; }
         public string Rating { get; private set; }
 
+        private Client():base(){}
         
         private Client(string firstName, string lastName, MailAddress email, UserSecurity securePassword, Address givenAddress, string rating) : base(firstName, lastName, email, securePassword)
         {
