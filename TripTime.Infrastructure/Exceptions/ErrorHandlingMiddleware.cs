@@ -2,15 +2,15 @@
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using NLog;
 
 namespace TripTime.Infrastructure.Exceptions
 {
     public class ErrorHandlingMiddleware
     {
         private readonly RequestDelegate _next;
-        private static readonly ILogger _logger = ApplicationLogging.CreateLogger("Error");
+        private static ILogger _logger = LogManager.GetCurrentClassLogger();
 
         public ErrorHandlingMiddleware(RequestDelegate next)
         {
@@ -49,7 +49,8 @@ namespace TripTime.Infrastructure.Exceptions
             }
 
             var error = ErrorBuilder.Build(exception, code, context.Request);
-            _logger.LogError("REST call threw exception [" + error.UniqueErrorId + "] , request=" + FullUrl(context.Request), exception);
+            _logger.Error("REST call threw exception [" + error.UniqueErrorId + "] , request=" + FullUrl(context.Request));
+            _logger.Error("exception: " + exception);
 
             var result = JsonConvert.SerializeObject(error);
             context.Response.ContentType = "application/json";

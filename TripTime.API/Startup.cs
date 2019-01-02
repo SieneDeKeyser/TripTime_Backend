@@ -20,8 +20,8 @@ using TripTime.API.ContactInformation.Mapper;
 using TripTime.API.Users.Mapper;
 using TripTime.Data.Contexts;
 using TripTime.Data.Repositories;
+using TripTime.Infrastructure.Exceptions;
 using TripTime.Infrastructure.GlobalInterfaces;
-using TripTime.Service.Logger;
 using TripTime.Service.Users;
 using TripTime.Service.Users.Security;
 
@@ -56,7 +56,6 @@ namespace TripTime.API
                 });
             });
 
-            services.AddScoped<ILoggerManager, LoggerManager>();
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<AdminMapper>();
@@ -98,7 +97,7 @@ namespace TripTime.API
                 });
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerManager logger)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -111,10 +110,7 @@ namespace TripTime.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "TripTime App V1");
                 c.RoutePrefix = string.Empty;
             });
-            //  app.ConfigureExceptionHandler(logger);
-
-            ConfigureAdditionalMiddleware(app, env);
-
+           
             app.UseCors(x => x
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
@@ -123,6 +119,7 @@ namespace TripTime.API
 
             app.UseAuthentication();
 
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseMvc();
         }
 
