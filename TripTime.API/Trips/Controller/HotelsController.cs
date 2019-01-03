@@ -31,7 +31,7 @@ namespace TripTime.API.Trips.Controller
             var hotel = _hotelMapper.DtoToDomain(givenHotelDTO);
             var hotelId = await _hotelService.Create(hotel);
             HotelDTO_Return hotelDto = _hotelMapper.DomainToDto(await _hotelService.GetHotelById(Guid.Parse(hotelId)));
-            return Created($"api/Trips/{hotelId}", hotelId);
+            return Created($"api/Hotels/{hotelId}", hotelId);
         }
 
         [HttpGet]

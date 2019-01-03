@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripTime.Service.Tests", "T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripTime.Data.Tests", "TripTime.Data.Tests\TripTime.Data.Tests.csproj", "{0016C126-1D5E-414F-870A-DFF44B50B7A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripTime_IntegrationTests", "TripTime_IntegrationTests\TripTime_IntegrationTests.csproj", "{28B3D19E-5099-40CA-8755-F0FEF67F2B2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{0016C126-1D5E-414F-870A-DFF44B50B7A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0016C126-1D5E-414F-870A-DFF44B50B7A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0016C126-1D5E-414F-870A-DFF44B50B7A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28B3D19E-5099-40CA-8755-F0FEF67F2B2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B3D19E-5099-40CA-8755-F0FEF67F2B2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28B3D19E-5099-40CA-8755-F0FEF67F2B2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28B3D19E-5099-40CA-8755-F0FEF67F2B2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{0DC0D25C-45C8-4537-9F69-4272435D8FD8} = {29584828-AA94-42CB-84B0-0888ACF2CFDD}
 		{EB07D359-04F7-42F3-9DD2-30DF381426B1} = {29584828-AA94-42CB-84B0-0888ACF2CFDD}
 		{0016C126-1D5E-414F-870A-DFF44B50B7A7} = {29584828-AA94-42CB-84B0-0888ACF2CFDD}
+		{28B3D19E-5099-40CA-8755-F0FEF67F2B2A} = {29584828-AA94-42CB-84B0-0888ACF2CFDD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {40752B97-94E8-4B13-9AD4-CF96291BA802}

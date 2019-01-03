@@ -47,8 +47,7 @@ namespace TripTime.API
             Configuration = configuration;
         }
 
-
-        public virtual void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             ConfigureAdditionalServices(services);
         }
@@ -80,9 +79,8 @@ namespace TripTime.API
             services.AddScoped<IRepository<Hotel>, HotelRepository>();
             services.AddScoped<IRepository<Address>, AddressRepository>();
 
+            services.AddSingleton(ConfigureDbContext());
             services.AddTransient<TripTimeContext>();
-            services.AddDbContext<TripTimeContext>(options => options.UseSqlServer(GetConnectionString()));
-
 
             services.AddScoped<Hasher>();
             services.AddScoped<Salter>();
@@ -109,6 +107,13 @@ namespace TripTime.API
                         ValidateAudience = false
                     };
                 });
+        }
+
+        protected virtual DbContextOptions<TripTimeContext> ConfigureDbContext()
+        {
+            return new DbContextOptionsBuilder<TripTimeContext>()
+                .UseSqlServer(GetConnectionString())
+                .Options;
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -147,11 +152,6 @@ namespace TripTime.API
             }
             return connectionString;
         }
-
-        protected virtual void ConfigureAdditionalMiddleware(IApplicationBuilder app, IHostingEnvironment env)
-        {
-        }
-
     }
 
 }
