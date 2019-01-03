@@ -87,6 +87,7 @@ namespace TripTime.API.Tests.Hotels
             Assert.Equal(200, okResult.StatusCode);
         }
 
+        [Fact]
         public async Task GivenListHotelDto_WhenGetOneById_ThenReturnOKWithOne()
         {
             //Given
