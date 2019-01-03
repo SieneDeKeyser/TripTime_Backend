@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using TripTime.API.Users.DTO;
 using TripTime.API.Users.DTO.UserDTO;
 using TripTime.API.Users.Mapper;
@@ -32,18 +32,13 @@ namespace TripTime.API.Users.Controller
 
         [HttpPost("authenticate")]
         [AllowAnonymous]
-        public async Task< ActionResult<TokenDTO>> Authenticate([FromBody] LoginDTO userRequestDto)
+        public async Task<ActionResult<TokenDTO>> Authenticate([FromBody] LoginDTO userRequestDto)
         {
             var securityToken = await _userAuthenticationService.Authenticate(userRequestDto.Email, userRequestDto.Password);
 
-            if (securityToken != null)
-            {
-                TokenDTO token = new TokenDTO();
-                token.Token = securityToken.RawData;
-                return Ok(token);
-            }
-
-            return BadRequest("Email or Password incorrect!");
+            TokenDTO token = new TokenDTO();
+            token.Token = securityToken.RawData;
+            return Ok(token);
         }
 
         [HttpGet("current")]
@@ -51,11 +46,7 @@ namespace TripTime.API.Users.Controller
         public async Task<ActionResult<UserDTO_Return>> GeCurrentUser()
         {
             var authenticatedUser = await _userAuthenticationService.GetCurrentLoggedInUser(User);
-            if (authenticatedUser != null)
-            {
-                return Ok(_userMapper.DomainToDto(authenticatedUser));
-            }
-            return BadRequest("Could not find your user information... Contact us :)");
+            return Ok(_userMapper.DomainToDto(authenticatedUser));
         }
     }
 }

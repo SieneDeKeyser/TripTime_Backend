@@ -66,7 +66,6 @@ namespace TripTime.API
                 });
             });
 
-            services.AddScoped<ILoggerManager, LoggerManager>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IHotelService, HotelService>();
             services.AddScoped<IAddressService, AddressService>();
@@ -112,7 +111,7 @@ namespace TripTime.API
                 });
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerManager logger)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -125,10 +124,7 @@ namespace TripTime.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "TripTime App V1");
                 c.RoutePrefix = string.Empty;
             });
-            //  app.ConfigureExceptionHandler(logger);
-
-            ConfigureAdditionalMiddleware(app, env);
-
+           
             app.UseCors(x => x
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
@@ -137,6 +133,7 @@ namespace TripTime.API
 
             app.UseAuthentication();
 
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseMvc();
         }
 
