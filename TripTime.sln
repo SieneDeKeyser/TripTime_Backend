@@ -3,27 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripTime.API", "TripTime.API\TripTime.API.csproj", "{06D72495-38F5-4F7C-A7A2-B5FF84D3F102}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripTime.API", "TripTime.API\TripTime.API.csproj", "{06D72495-38F5-4F7C-A7A2-B5FF84D3F102}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripTime.Domain", "TripTime.Domain\TripTime.Domain.csproj", "{75881E6A-C541-4065-8CA6-83BA608607F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripTime.Domain", "TripTime.Domain\TripTime.Domain.csproj", "{75881E6A-C541-4065-8CA6-83BA608607F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripTime.Service", "TripTime.Service\TripTime.Service.csproj", "{CFDEC016-21A2-4FA7-99E8-D0EE40A73405}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripTime.Service", "TripTime.Service\TripTime.Service.csproj", "{CFDEC016-21A2-4FA7-99E8-D0EE40A73405}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripTime.Infrastructure", "TripTime.Infrastructure\TripTime.Infrastructure.csproj", "{53425B00-55D0-474F-848F-F182FC519B92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripTime.Infrastructure", "TripTime.Infrastructure\TripTime.Infrastructure.csproj", "{53425B00-55D0-474F-848F-F182FC519B92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripTime.Data", "TripTime.Data\TripTime.Data.csproj", "{E1363E09-3404-42ED-A0AC-10ACAD99CAB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripTime.Data", "TripTime.Data\TripTime.Data.csproj", "{E1363E09-3404-42ED-A0AC-10ACAD99CAB7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{29584828-AA94-42CB-84B0-0888ACF2CFDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripTime.API.Tests", "TripTime.API.Tests\TripTime.API.Tests.csproj", "{4E8F1333-B766-4DBD-8AAF-A19300C91F7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripTime.API.Tests", "TripTime.API.Tests\TripTime.API.Tests.csproj", "{4E8F1333-B766-4DBD-8AAF-A19300C91F7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripTime.Domain.Tests", "TripTime.Domain.Tests\TripTime.Domain.Tests.csproj", "{1E14886C-F70B-410B-9758-44B2B86A6D74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripTime.Domain.Tests", "TripTime.Domain.Tests\TripTime.Domain.Tests.csproj", "{1E14886C-F70B-410B-9758-44B2B86A6D74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripTime.Infrastrucute.Tests", "TripTime.Infrastrucute.Tests\TripTime.Infrastrucute.Tests.csproj", "{0DC0D25C-45C8-4537-9F69-4272435D8FD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripTime.Infrastructure.Tests", "TripTime.Infrastrucute.Tests\TripTime.Infrastructure.Tests.csproj", "{0DC0D25C-45C8-4537-9F69-4272435D8FD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripTime.Service.Tests", "TripTime.Service.Tests\TripTime.Service.Tests.csproj", "{EB07D359-04F7-42F3-9DD2-30DF381426B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripTime.Service.Tests", "TripTime.Service.Tests\TripTime.Service.Tests.csproj", "{EB07D359-04F7-42F3-9DD2-30DF381426B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripTime.Data.Tests", "TripTime.Data.Tests\TripTime.Data.Tests.csproj", "{0016C126-1D5E-414F-870A-DFF44B50B7A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripTime.Data.Tests", "TripTime.Data.Tests\TripTime.Data.Tests.csproj", "{0016C126-1D5E-414F-870A-DFF44B50B7A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

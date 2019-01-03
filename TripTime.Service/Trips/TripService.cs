@@ -31,12 +31,12 @@ namespace TripTime.Service.Trips
 
         public async Task<Trip> GetTripById(Guid id)
         {
-            var trip = _repository.GetById(id);
+            var trip = await _repository.GetById(id);
             if (trip == null)
             {
                 throw new ObjectNotFoundException("Searching Trip by id", "Trip", id);
             }
-            return await _repository.GetById(id);
+            return trip;
         }
     }
 }

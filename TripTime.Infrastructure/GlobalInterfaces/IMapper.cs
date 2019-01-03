@@ -9,6 +9,6 @@ namespace TripTime.Infrastructure.GlobalInterfaces
         Domain DtoToDomain(CreateDTO givenDTO);
         List<Domain> DtoListToDomainList(List<CreateDTO> listOfcreateDTOs);
         ReturnDTO DomainToDto(Domain givenDomainObject);
-        List<ReturnDTO> DtoListToDomainList(List<Domain> listOfDomainObjects);
+        List<ReturnDTO> DomainListToDtoList(List<Domain> listOfDomainObjects);
     }
 }

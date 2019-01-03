@@ -1,5 +1,7 @@
 ﻿using System;
 using TripTime.Domain.ContactInformation;
+using TripTime.Infrastructure.Exceptions;
+
 namespace TripTime.Domain.Trips
 {
    public class Hotel
@@ -22,6 +24,10 @@ namespace TripTime.Domain.Trips
 
         public static Hotel CreateNewHotel(Guid id, Guid addressId, string website, string contactPerson)
         {
+            if (Guid.Empty == id || string.IsNullOrEmpty(website) || string.IsNullOrEmpty(contactPerson))
+            {
+                throw new ObjectNotValidException("Some fields can not be empty or whiteSpace when creating this new hotel", new Hotel());
+            }
             return new Hotel(id, addressId, website, contactPerson);
         }
     }

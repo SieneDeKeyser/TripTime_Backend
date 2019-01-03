@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TripTime.API.Trips.DTO;
+using TripTime.API.Trips.DTO.Trips;
 using TripTime.Domain.Trips;
 using TripTime.Infrastructure.GlobalInterfaces;
 
@@ -31,7 +32,7 @@ namespace TripTime.API.Trips.Mapper
                 .ToList();
         }
 
-        public List<TripDTO_Return> DtoListToDomainList(List<Trip> listOfDomainObjects)
+        public List<TripDTO_Return> DomainListToDtoList(List<Trip> listOfDomainObjects)
         {
             return listOfDomainObjects.Select(
                 trip => { return DomainToDto(trip); })

@@ -16,12 +16,22 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using TripTime.API.ContactInformation.DTO;
 using TripTime.API.ContactInformation.Mapper;
+using TripTime.API.Trips.DTO.Hotels;
+using TripTime.API.Trips.Mapper;
+using TripTime.API.Users.DTO.AdminDTO;
+using TripTime.API.Users.DTO.ClientDTO;
 using TripTime.API.Users.Mapper;
 using TripTime.Data.Contexts;
 using TripTime.Data.Repositories;
+using TripTime.Domain.ContactInformation;
+using TripTime.Domain.Trips;
+using TripTime.Domain.Users;
 using TripTime.Infrastructure.GlobalInterfaces;
+using TripTime.Service.ContactInformations;
 using TripTime.Service.Logger;
+using TripTime.Service.Trips.Hotels;
 using TripTime.Service.Users;
 using TripTime.Service.Users.Security;
 
@@ -58,14 +68,18 @@ namespace TripTime.API
 
             services.AddScoped<ILoggerManager, LoggerManager>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IHotelService, HotelService>();
+            services.AddScoped<IAddressService, AddressService>();
 
-            services.AddScoped<AdminMapper>();
-            services.AddScoped<ClientMapper>();
+            services.AddScoped<IMapper<Admin, AdminDTO_Create, AdminDTO_Return>, AdminMapper>();
+            services.AddScoped<IMapper<Client, ClientDTO_Create, ClientDTO_Return>, ClientMapper>();
             services.AddScoped<UserMapper>();
-            services.AddScoped<AddressMapper>();
-
+            services.AddScoped<IMapper<Address, AddressDTO_Create, AddressDTO_Return>, AddressMapper>();
+            services.AddScoped<IMapper<Hotel, HotelDTO_Create, HotelDTO_Return>, HotelMapper>();
 
             services.AddScoped<UserRepository>();
+            services.AddScoped<IRepository<Hotel>, HotelRepository>();
+            services.AddScoped<IRepository<Address>, AddressRepository>();
 
             services.AddTransient<TripTimeContext>();
             services.AddDbContext<TripTimeContext>(options => options.UseSqlServer(GetConnectionString()));

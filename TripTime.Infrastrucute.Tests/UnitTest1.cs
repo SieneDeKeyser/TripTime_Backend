@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace TripTime.Infrastrucute.Tests
+namespace TripTime.Infrastructure.Tests
 {
     public class UnitTest1
     {

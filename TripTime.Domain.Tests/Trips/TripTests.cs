@@ -25,7 +25,6 @@ namespace TripTime.Domain.Tests.Trips
 
             //then
             Assert.Equal(7000, tripAllinclusive.BasicPrice);
-
         }
 
         [Fact]
@@ -44,7 +43,6 @@ namespace TripTime.Domain.Tests.Trips
 
             //then
             Assert.Equal(3500, tripAllinclusive.BasicPrice);
-
         }
     }
 }

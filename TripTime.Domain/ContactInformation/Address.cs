@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TripTime.Infrastructure.Exceptions;
 
 namespace TripTime.Domain.ContactInformation
 {
@@ -28,6 +29,14 @@ namespace TripTime.Domain.ContactInformation
 
         public static Address CreateNewAddress(int zipCode, string city, string country, string streetName, string streetNumber)
         {
+            if (zipCode == 0 || 
+                string.IsNullOrEmpty(city) ||
+                string.IsNullOrEmpty(country) ||
+                string.IsNullOrEmpty(streetName) ||
+                string.IsNullOrEmpty(streetNumber))
+            {
+                throw new ObjectNotValidException("Some fields can not be empty or whiteSpace when creating this new address", new Address());
+            }
             return new Address(zipCode, city, country, streetName, streetNumber);
         }
     }

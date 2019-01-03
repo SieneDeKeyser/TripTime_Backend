@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using TripTime.Domain.Files;
 using TripTime.Domain.Trips;
 
-namespace TripTime.API.Trips.DTO
+namespace TripTime.API.Trips.DTO.Trips
 {
     public class TripDTO_Return
     {

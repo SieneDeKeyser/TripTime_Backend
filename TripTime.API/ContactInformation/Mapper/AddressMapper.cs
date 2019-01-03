@@ -38,7 +38,7 @@ namespace TripTime.API.ContactInformation.Mapper
             throw new NotImplementedException();
         }
 
-        public List<AddressDTO_Return> DtoListToDomainList(List<Address> listOfDomainObjects)
+        public List<AddressDTO_Return> DomainListToDtoList(List<Address> listOfDomainObjects)
         {
             throw new NotImplementedException();
         }

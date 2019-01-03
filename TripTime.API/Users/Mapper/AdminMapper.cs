@@ -49,7 +49,7 @@ namespace TripTime.API.Users.Mapper
             throw new NotImplementedException();
         }
 
-        public List<AdminDTO_Return> DtoListToDomainList(List<Admin> listOfDomainObjects)
+        public List<AdminDTO_Return> DomainListToDtoList(List<Admin> listOfDomainObjects)
         {
             throw new NotImplementedException();
         }

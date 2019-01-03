@@ -25,10 +25,6 @@ namespace TripTime.API.Users.Mapper
             _userMapper = userMapper;
         }
 
-
-
-
-
         public ClientDTO_Return DomainToDto(Client givenDomainObject)
         {
             return new ClientDTO_Return
@@ -58,7 +54,7 @@ namespace TripTime.API.Users.Mapper
             throw new NotImplementedException();
         }
 
-        public List<ClientDTO_Return> DtoListToDomainList(List<Client> listOfDomainObjects)
+        public List<ClientDTO_Return> DomainListToDtoList(List<Client> listOfDomainObjects)
         {
             throw new NotImplementedException();
         }

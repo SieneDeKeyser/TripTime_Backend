@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TripTime.API.Trips.DTO;
+using TripTime.API.Trips.DTO.Trips;
 using TripTime.Domain.Trips;
 using TripTime.Infrastructure.GlobalInterfaces;
 using TripTime.Service.Trips;
