@@ -48,7 +48,8 @@ namespace TripTime_IntegrationTests.Hotels
                 {
                     Address = newAddressDto,
                     Website = "TestWebsite",
-                    ContactPerson = "Test contact Person"
+                    ContactPerson = "Test contact Person",
+                    Name="Test Name"
                 };
 
                 var contentHotel = JsonConvert.SerializeObject(newHotelDto);
@@ -116,7 +117,8 @@ namespace TripTime_IntegrationTests.Hotels
                 {
                     Address = newAddressDto,
                     Website = "TestWebsite",
-                    ContactPerson = "Test contact Person"
+                    ContactPerson = "Test contact Person",
+                    Name = "Test Name"
                 };
 
                 var contentHotel = JsonConvert.SerializeObject(newHotelDto);

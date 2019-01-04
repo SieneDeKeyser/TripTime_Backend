@@ -29,7 +29,8 @@ namespace TripTime.API.Trips.Mapper
             {
                 Address = _addressMapper.DomainToDto(givenDomainObject.Address),
                 Website = givenDomainObject.Website,
-                ContactPerson = givenDomainObject.ContactPerson
+                ContactPerson = givenDomainObject.ContactPerson,
+                Name=givenDomainObject.Name
             };
         }
 
@@ -50,6 +51,7 @@ namespace TripTime.API.Trips.Mapper
             return Hotel.CreateNewHotel(
                 Guid.NewGuid(),
                 newAddress.Id,
+                givenDTO.Name,
                 givenDTO.Website,
                 givenDTO.ContactPerson);
         }

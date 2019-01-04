@@ -20,7 +20,7 @@ namespace TripTime.Data.Repositories
 
         public async Task<List<Hotel>> GetAll()
         {
-            return await _context.Hotels.ToListAsync();
+            return await _context.Hotels.Include(hotel=>hotel.Address).ToListAsync();
         }
 
         public async Task<Hotel> GetById(Guid id)

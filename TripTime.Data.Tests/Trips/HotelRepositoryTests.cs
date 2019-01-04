@@ -31,6 +31,7 @@ namespace TripTime.Data.Tests.Trips
                 Hotel newHotel = Hotel.CreateNewHotel(
                     Guid.NewGuid(),
                     Guid.NewGuid(),
+                    "TestName",
                     "TestWebsite",
                     "Test contact Person"
                  );
@@ -67,11 +68,12 @@ namespace TripTime.Data.Tests.Trips
                 Hotel newHotel = Hotel.CreateNewHotel(
                     Guid.NewGuid(),
                     newAddress.Id,
+                    "TestName",
                     "TestWebsite",
                     "Test contact Person");
                 context.Hotels.Add(newHotel);
                 await context.SaveChangesAsync();
-                
+
                 //when
                 var foundedHotel = await _repository.GetById(newHotel.Id);
 
@@ -95,6 +97,7 @@ namespace TripTime.Data.Tests.Trips
                 Hotel newHotel = Hotel.CreateNewHotel(
                     Guid.NewGuid(),
                     Guid.NewGuid(),
+                    "TestName",
                     "TestWebsite",
                     "Test contact Person"
                  );
@@ -124,6 +127,7 @@ namespace TripTime.Data.Tests.Trips
                 Hotel newHotel = Hotel.CreateNewHotel(
                     Guid.NewGuid(),
                     Guid.NewGuid(),
+                    "TestName",
                     "TestWebsite",
                     "Test contact Person"
                  );

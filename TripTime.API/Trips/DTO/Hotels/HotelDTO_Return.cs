@@ -10,6 +10,7 @@ namespace TripTime.API.Trips.DTO.Hotels
     {
         public AddressDTO_Return Address { get; set; }
         public string Website { get; set; }
+        public string Name { get; set; }
         public string ContactPerson { get; set; }
     }
 }

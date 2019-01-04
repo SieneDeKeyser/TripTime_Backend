@@ -51,6 +51,7 @@ namespace TripTime.API.Tests.Hotels
             var newHotel = Hotel.CreateNewHotel(
                 Guid.NewGuid(),
                 Guid.NewGuid(),
+                "TestName",
                 "Test Website",
                 "Test ContactPerson");
 
@@ -72,6 +73,7 @@ namespace TripTime.API.Tests.Hotels
             //Given
             Hotel hotel = Hotel.CreateNewHotel(Guid.NewGuid(),
                 Guid.NewGuid(),
+                "TestName",
                 "test website",
                 "Test contactPerson");
 
@@ -93,7 +95,8 @@ namespace TripTime.API.Tests.Hotels
             //Given
             var newHotel = Hotel.CreateNewHotel(
                 Guid.NewGuid(),
-                Guid.NewGuid(),
+                Guid.NewGuid(), 
+                "TestName",
                 "Test Website",
                 "Test ContactPerson");
             

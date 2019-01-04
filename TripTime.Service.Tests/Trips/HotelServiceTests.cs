@@ -29,6 +29,7 @@ namespace TripTime.Service.Tests.Trips
             Hotel newHotel = Hotel.CreateNewHotel(
                 Guid.NewGuid(),
                 Guid.NewGuid(),
+                "TestName",
                 "TestWebsite",
                 "Test contact Person");
 
@@ -46,6 +47,7 @@ namespace TripTime.Service.Tests.Trips
             Hotel newHotel = Hotel.CreateNewHotel(
                 Guid.NewGuid(),
                 Guid.NewGuid(),
+                "TestName",
                 "TestWebsite",
                 "Test contact Person");
 
@@ -63,6 +65,7 @@ namespace TripTime.Service.Tests.Trips
             Hotel fakeHotel = Hotel.CreateNewHotel(
                 Guid.NewGuid(),
                 Guid.NewGuid(),
+                "TestName",
                 "TestWebsite",
                 "Test contact Person");
 

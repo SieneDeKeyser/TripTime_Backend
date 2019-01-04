@@ -19,7 +19,7 @@ namespace TripTime.API.ContactInformation.Mapper
                 StreetName = givenDomainObject.StreetName,
                 StreetNumber = givenDomainObject.StreetNumber,
                 Id = givenDomainObject.Id,
-                ZipCode = givenDomainObject.ZipCode
+                ZipCode = givenDomainObject.ZipCode,
             };
         }
         public Address DtoToDomain(AddressDTO_Create givenDTO)
