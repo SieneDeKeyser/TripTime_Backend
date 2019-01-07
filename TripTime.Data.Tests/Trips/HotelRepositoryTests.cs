@@ -124,9 +124,17 @@ namespace TripTime.Data.Tests.Trips
                 _repository = new HotelRepository(context);
 
                 //Given
+                Address newAddress = Address.CreateNewAddress(
+                    1820,
+                    "test",
+                    "test",
+                    "test",
+                    "test");
+                context.Set<Address>().Add(newAddress);
+
                 Hotel newHotel = Hotel.CreateNewHotel(
                     Guid.NewGuid(),
-                    Guid.NewGuid(),
+                    newAddress.Id,
                     "TestName",
                     "TestWebsite",
                     "Test contact Person"
